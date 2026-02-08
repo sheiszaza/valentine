@@ -100,6 +100,68 @@ body {
   }
 }
 
+/* Page transition when pressing "Still thinking" */
+.page-enter {
+  animation: pageEnter 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.page-enter .title-container {
+  animation: pageEnterTitle 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+.page-enter .reasons-list,
+.page-enter .please-content {
+  animation: pageEnterContent 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+}
+
+.page-enter .button-container {
+  animation: pageEnterButtons 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pageEnterTitle {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pageEnterContent {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pageEnterButtons {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .title-container {
   margin-bottom: 3.5rem;
 }
@@ -434,6 +496,35 @@ body {
 
 .celebration-text p:nth-child(2) {
   animation-delay: 0.3s;
+}
+
+.meetup-details {
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.meetup-label {
+  font-size: clamp(0.95rem, 2vw + 0.4rem, 1.1rem);
+  opacity: 0.95;
+  margin-bottom: 0.5rem;
+}
+
+.meetup-date {
+  font-size: clamp(1.25rem, 3vw + 0.5rem, 1.5rem);
+  font-weight: 700;
+  margin: 0.5rem 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.meetup-place {
+  font-size: clamp(1.1rem, 2.5vw + 0.5rem, 1.35rem);
+  font-weight: 600;
+  margin-top: 0.5rem;
 }
 
 /* Animations */
