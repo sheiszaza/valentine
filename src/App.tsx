@@ -97,8 +97,15 @@ function App() {
     }, 4000)
   }
 
+  const scrollToTopAndGoTo = (page: Page, delayMs = 450) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    setTimeout(() => {
+      setCurrentPage(page)
+    }, delayMs)
+  }
+
   const handleContinueThinking = () => {
-    setCurrentPage('moreReasons')
+    scrollToTopAndGoTo('moreReasons')
   }
 
   const handleMoreReasonsYes = () => {
@@ -109,7 +116,7 @@ function App() {
   }
 
   const handleStillThinking = () => {
-    setCurrentPage('whatIf')
+    scrollToTopAndGoTo('whatIf')
   }
 
   const handleWhatIfYes = () => {
@@ -120,7 +127,7 @@ function App() {
   }
 
   const handleStillNotSure = () => {
-    setCurrentPage('please')
+    scrollToTopAndGoTo('please')
   }
 
   const handlePleaseYes = () => {
@@ -291,7 +298,7 @@ function App() {
             </div>
           ))}
         </div>
-        <div className="content fade-in">
+        <div key={currentPage} className="content page-enter">
           <div className="title-container">
             <h1 className="main-title">Wait, Let Me Tell You Why... 💭</h1>
             <p className="subtitle">Here are just a few reasons why I'd love to be your Valentine:</p>
@@ -369,7 +376,7 @@ function App() {
             </div>
           ))}
         </div>
-        <div className="content fade-in">
+        <div key={currentPage} className="content page-enter">
           <div className="title-container">
             <h1 className="main-title">Okay, Here Are More Reasons... 💝</h1>
             <p className="subtitle">I have so many reasons why I want to be your Valentine:</p>
@@ -446,7 +453,7 @@ function App() {
             </div>
           ))}
         </div>
-        <div className="content fade-in">
+        <div key={currentPage} className="content page-enter">
           <div className="title-container">
             <h1 className="main-title">What If...? 💭</h1>
             <p className="subtitle">Just imagine what Valentine's Day could be like:</p>
@@ -515,7 +522,7 @@ function App() {
             </div>
           ))}
         </div>
-        <div className="content fade-in">
+        <div key={currentPage} className="content page-enter">
           <div className="title-container">
             <div className="please-icon">🥺</div>
             <h1 className="main-title">Pretty Please? 🙏</h1>
@@ -619,6 +626,11 @@ function App() {
           <div className="celebration-text">
             <p>This is going to be the best Valentine's Day ever! 🌹</p>
             <p>Thank you for saying yes! 💖</p>
+            <div className="meetup-details">
+              <p className="meetup-label">Meet me on</p>
+              <p className="meetup-date">13th Feb at 8 AM</p>
+              <p className="meetup-place">Zad al Baher Restaurant</p>
+            </div>
           </div>
         </div>
       </div>
